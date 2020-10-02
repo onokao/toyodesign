@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="css/common.css">
+    <script src="https://kit.fontawesome.com/3da409cdf3.js" crossorigin="anonymous"></script>
+  <title>common html</title>
+</head>
+<body>
+<!-- header -->
+<header>
+  <ul class="nav-list">
+    <li class="nav-list-item">
+        <a href="#">在庫一覧</a>
+    </li>
+    <li class="nav-list-item">
+        <a href="#">最低在庫</a>
+    </li>
+    <li class="nav-list-item">
+        <a href="#">発注</a>
+    </li>
+    <li class="nav-list-item">
+        <a href="#">マスタ関連</a>
+    </li>
+          <li class="nav-list-item">
+        <a href="#">入出荷履歴</a>
+    </li>
+    <li class="nav-list-item" id="logout">
+        <a href="#">ログアウト<span><i class="fas fa-sign-out-alt"></i></span></a>
+    </li>
+  </ul>
+<div class="header-line"></div>
+</header>
+<form>
+    <div id="search-wrapper">
+        <h1 class="page-title">
+        </h1>
+        <input type="text" name="search-input" id="main-search" placeholder="部品IDを入力してください">
+        <button class="add-condition">検索条件追加</button>
+        <button id="search-btn"><i class="fas fa-search"></i>検索</button>
+        <span id="a"><i class="fas fa-bars" onclick="showMenu()"></i></span>
+    </div>
+</form>
+
+</body>
+</html>

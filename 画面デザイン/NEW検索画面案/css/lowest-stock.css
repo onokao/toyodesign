@@ -1,0 +1,547 @@
+/*
+ * html,bodyタグの設定
+ */
+html, body{
+    margin: 0;					/* 領域外の余白の削除 */
+    padding: 0;					/* 領域内の余白の削除 */
+    width:100%;					/* 横幅100% */
+    height:100%;				/* 縦幅100% */
+}
+
+/*
+ * ヘッダータイトルの属性
+ */
+div#header-title{
+    position: fixed;			/* ヘッダーの固定 */
+    top: 0px;					/* 位置(上0px) */
+    left: 0px;					/* 位置(右0px) */
+    width: 100%;				/* 横幅 */
+    height: 25px;				/* 縦幅 */
+    background-color:#000066;	/* 背景色 */
+}
+/*
+ * 業務名の属性
+ */
+.business-name{
+    margin: 0;					/* 領域外の余白の削除 */
+    font-size: 14px;			/* フォントサイズ */
+    line-height: 25px;			/* 行の高 */
+    vertical-align: middle;		/* 縦方向の揃え位置 */
+    color: #ffffff;				/* 文字色 */
+}
+
+/*
+ * ヘッダーの属性
+ */
+div#header{
+    position: fixed;			/* ヘッダーの固定 */
+    top: 25px;					/* 位置(上0px) */
+    left: 0px;					/* 位置(右0px) */
+    width: 100%;				/* 横幅 */
+    height: 60px;				/* 縦幅 */
+    background-color:#FCCAD8;	/* 背景色 */
+}
+.header-table{
+	border: 0px;
+}
+.header-table td{
+	border: 0px;
+	width: 80px;
+	text-align: center;
+}
+
+/*
+ * 横並びメニュー(ハイパーリンク)
+ */
+a.menu{
+    font-size:0.8em;			/* フォントサイズ */
+    padding:5px;				/* 領域内の余白 */
+    border:0px none;			/* 境界線 */
+    background-color: #003300;	/* 背景色 */
+    color: #ffffff;				/* 文字色 */
+    display:block;				/* ブロックで表示 */
+    width:100px;				/* 横幅 */
+}
+/*
+ * 横並びメニュー(ハイパーリンクフォーカス時)
+ */
+
+a.menu:hover{
+    background:#3300FF;			/* 背景スタイル */
+}
+/*
+ * メッセージの定義
+ */
+div#message{
+    position: fixed;			/* ヘッダーの固定 */
+    top:85px;					/* 上からの配置位置 */
+	padding:0px 0px 0px 0px;	/* 領域内の余白(上右下左) */
+    text-align:left;			/* 水平方向の揃え位置 */
+	height: 25px;				/* 縦幅 */
+    width: 100%;				/* 横幅 */
+}
+/*
+ * エラートップメッセージの属性
+ */
+.error-messege{
+    margin: 0;					/* 領域外の余白の削除 */
+    font-size: 14px;			/* フォントサイズ */
+    line-height: 25px;			/* 行の高 */
+    vertical-align: middle;		/* 縦方向の揃え位置 */
+    text-align: left;			/* 揃え位置 */
+    color: #ffffff;				/* 文字色 */
+    background-color:#dd0000;	/* 背景色 */
+    animation: 2s linear infinite blink_effect;
+}
+
+@keyframes blink_effect {
+    0% {
+        visibility: hidden;
+    }
+    50% {
+        visibility: hidden;
+    }
+    100% {
+        visibility: visible;
+    }
+}
+
+/*
+ * フッターの固定
+ */
+div#footer{
+    position: fixed;			/* フッターの固定 */
+	width: 100%;				/* 横幅 */
+	bottom: 0px;				/* 位置(下0px) */
+    left: 0px;					/* 位置(左0px) */
+    background-color:#000066;	/* 背景色 */
+}
+/*
+ * フッター文字の属性
+ */
+.footer-name{
+    padding: 0px 10px 0px 0px;	/* 領域内の余白(上右下左) */
+    margin: 0;					/* 領域外の余白の削除 */
+    font-size: 14px;			/* フォントサイズ */
+    line-height: 35px;			/* 行の高 */
+    vertical-align: middle;		/* 縦方向の揃え位置 */
+    text-align:right;			/* 水平方向の揃え位置 */
+    color: #ffffff;				/* 文字色 */
+}
+
+
+/*
+ * 検索テーブルの属性
+ */
+div#form{
+	width:100%;
+    height:100%;
+	display: grid;
+    /* 縦 */
+    /* (ヘッダー・MENUボタン・メッセージ)、検索条件入力欄、隙間、検索結果、フッター */
+    grid-template-rows: 110px 118px 15px 1fr 35px;
+    /* 横 */
+    /* 余白、検索条件入力欄、検索結果(入力欄より長い分)、余白 */
+    grid-template-columns: 25px 1fr 1fr 15px;
+}
+
+table {
+    border-collapse: collapse;	/* 隣接するセルのボーダーを重ねて表示 */
+}
+table, td {
+    border: 1px #191970 solid;	/* 境界線 */
+    word-break:break-all;		/* */
+}
+th {
+    border: 1px #191970 solid;	/* 境界線 */
+    background-color:#FCCAD8;	/* 背景色 */
+    vertical-align: middle;
+}
+.search-clum{
+	background-color: #c0c0c0;
+}
+/*
+ * 検索テーブルの属性
+ */
+.top-table{
+	border: 1px solid  #000000;
+	vertical-align: middle;
+	width: 1070px;
+    margin: auto;
+}
+.top-table input{
+	border: 0 none;
+	margin-left: 5px;
+	padding: 3px;
+	width: 410px
+}
+.top-table select{
+	width: 400px;
+	padding: 3px
+}
+.top-table tr{
+	height: 35px;
+}
+.top-table th{
+	width: 115px;
+	font-size: 15px;
+	text-align:center;
+}
+.top-table td {
+	padding: 5px;
+	width: 420px;
+}
+
+/*
+ * 検索ボタンの属性
+ */
+#searchBtn{
+	padding: 4px 8px 4px 2px;
+	border: 2px solid  #000000;
+	width: 85px;
+	font-weight:bold;
+}
+.rihgt{
+    text-align:right;
+}
+.height-34{
+    height: 34px;
+}
+/*
+ * 検索結果
+ */
+#form #list{
+	grid-row: 4;
+	grid-column: 2 / 3;
+    display: grid;
+   /* 縦 */
+    /* 件数、項目名、データ */
+    grid-template-rows: 28px 46px 1fr;
+   /* 横 */
+    /* 検索条件入力欄、検索結果(入力欄より長い分) */
+    grid-template-columns: 1fr;
+    visibility: hidden;
+}
+/* 件数表示 */
+.tbody-result{
+	grid-row: 1;
+	grid-column: 1;
+	border-collapse: collapse;				/* 隣接するセルのボーダーを重ねて表示 */
+	width: var(--list-max-width);			/* 画面横いっぱい - (スクロールの長さ＋余白) */
+	max-width: var(--column-sum-width);		/* カラムの長さの合計値 */
+}
+.tbody-number{
+	text-align:left;
+	background-color: #c0c0c0;
+	border: 0px;
+	width: var(--column-sum-width);			/* カラムの長さの合計値 */
+	overflow: hidden;
+	position: relative;
+}
+
+/*
+ * 変数
+ */
+ :root{
+  --clum-height: 45px;
+  --check-box: 25px;
+  --base-th: 150px;
+  --base-code: 50px;
+  --base-name: 101px;
+  --location-th: 150px;
+  --location-code: 50px;
+  --location-name: 101px;
+  --shelf-code: 110px;
+  --model-name: 160px;
+  --parts-id: 80px;
+  --parts-name: 180px;
+  --drawing-no: 150px;
+  --stocks-count: 90px;
+  --ordering-count: 90px;
+  --lowest-stock-count: 100px;
+
+  --search-input-width: 1070px;					/* 検索条件入力欄の横幅 */
+  --search-input-height: 154px;					/* 検索条件入力欄の縦幅 */
+  --column-sum-width: 1330px;					/* カラムの長さの合計値 ヘッダーの実寸(横) */
+  --column-sum-width-scroll: 1346.5px;			/* カラムの長さの合計値＋スクロールの長さ データの実寸(横) */
+  --list-max-width: calc(100vw - 50px);			/* 画面横いっぱい - (スクロールの長さ＋余白) ヘッダーの表示幅(横) */
+  --list-max-width-scroll: calc(100vw - 33px);	/* 画面横いっぱい - 余白 データの表示幅(横) */
+  --list-max-height: calc(100vh - 360px);		/* 画面縦いっぱい - (スクロール+余白など) データの表示幅(縦) */
+ }
+
+/*
+ * テーブルヘッダー
+ */
+.list-header{
+	grid-row: 2;
+	grid-column: 1;
+	width: var(--list-max-width);			/* 画面横いっぱい - (スクロールの長さ＋余白) */
+	max-width: var(--column-sum-width);		/* カラムの長さの合計値 */
+	overflow: hidden;
+	table-layout: fixed;
+}
+.listHeaderTable{
+	width: var(--column-sum-width);			/* カラムの長さの合計値 */
+	position: relative;
+}
+
+tr.top th{
+	height: var(--clum-height);
+}
+tr.top{
+	padding: 5px;
+}
+tr.top .check-box{
+	width: var(--check-box);
+}
+#base-th{
+	width: var(--base-th);
+}
+#location-th{
+	width: var(--location-th);
+}
+tr.top .shelf-code{
+	width: var(--shelf-code);
+}
+tr.top .model-name{
+	width: var(--model-name);
+}
+tr.top .parts-id{
+	width: var(--parts-id);
+}
+tr.top .parts-name{
+	width: var(--parts-name);
+}
+tr.top .drawing-no{
+	width: var(--drawing-no);
+}
+tr.top .stocks-count{
+	width: var(--stocks-count);
+}
+tr.top .ordering-count{
+	width: var(--ordering-count);
+}
+tr.top .lowest-stock-count{
+	width: var(--lowest-stock-count);
+}
+
+/*
+ * テーブル検索結果
+ */
+#listData{
+	grid-row: 3;
+	grid-column: 1;
+	width: var(--list-max-width-scroll);		/* 画面横いっぱい - 余白 */
+	max-width: var(--column-sum-width-scroll);	/* カラムの長さの合計値＋スクロールの長さ */
+	overflow: scroll;
+	table-layout: fixed;
+	max-height: var(--list-max-height);			/* 画面縦いっぱい - (スクロール+余白など) */
+    height: 488px;
+}
+.list-table{
+	position: relative;
+	width: var(--column-sum-width);				/* カラムの長さの合計値 */
+}
+tr.down{
+	padding: 5px;
+	height: var(--clum-height);
+}
+tr.down .check-box{
+	width: var(--check-box);
+	text-align: center;
+}
+tr.down .check-box input{
+	margin: 0 0;
+}
+tr.down .base-code{
+	box-sizing: border-box;
+	width: var(--base-code);
+}
+tr.down .base-name{
+	width: var(--base-name);
+}
+tr.down .location-code{
+	box-sizing: border-box;
+	width: var(--location-code);
+	text-align: center;
+}
+tr.down .location-name{
+	width: var(--location-name);
+}
+tr.down .shelf-code{
+	width: var(--shelf-code);
+}
+tr.down .model-name{
+	width: var(--model-name);
+}
+tr.down .parts-id{
+	width: var(--parts-id);
+}
+tr.down .parts-name{
+	width: var(--parts-name);
+}
+tr.down .drawing-no{
+	width: var(--drawing-no);
+}
+tr.down .stocks-count{
+	width: var(--stocks-count);
+}
+tr.down .ordering-count{
+	width: var(--ordering-count);
+}
+tr.down .lowest-stock-count{
+	width: var(--lowest-stock-count);
+}
+
+
+.iframe-container{
+	height: 80vh;
+	width:80vw;
+}
+
+
+#form .search-area{
+	grid-row: 2 / 3;
+	grid-column: 2 / 3;
+    display: grid;
+   /* 縦 */
+    /* 余白、検索ボタン等、余白、詳細条件 */
+    grid-template-rows: 3px 40px 5px auto;
+   /* 横 */
+    /* 余白、詳細条件:、詳細条件(内容)等、余白 */
+    grid-template-columns: 25px 100px 1fr 25px;
+}
+.search-area-top-table{
+	grid-row: 2;
+	grid-column: 2 / 4;
+	border: none;
+}
+.search-area .search-input{
+	line-height: 40px;
+	border: none;
+	width: 210px;
+}
+.search-area .search-input input{
+	width: 200px;
+	height: 80%;
+}
+.search-area .search-button{
+	line-height: 40px;
+	border: none;
+	width: 100px;
+	vertical-align: middle;
+}
+.search-area .search-button input{
+	margin: 0 10px 0 0;
+	width : 85px;
+}
+.search-area .js-modal-open{
+	border: none;
+}
+.search-area .modal-open{
+	color: #ffffff;
+	font-size: 15px;
+	padding: 3px 12px;
+	border-radius: 18px;
+	border:  0.5px solid  #000099;
+	background: #3399ff;
+  	width: 100px;
+  	vertical-align: middle;
+}
+.modal-open:hover{
+	cursor : default;
+}
+.search-area .conditions{
+	padding: 0px;
+	margin: 0px;
+	grid-row: 4;
+	grid-column: 2 / 4;
+	display: grid;
+   /* 縦 */
+    /* 詳細条件 */
+    grid-template-rows: auto 10px;
+   /* 横 */
+    /* 詳細条件:、詳細条件(内容) */
+    grid-template-columns: 100px 1fr;
+
+}
+.search-area .detailed-conditions{
+	grid-row: 1;
+	grid-column: 1;
+	vertical-align: middle;
+	font-size: 15px;
+	font-weight:bold;
+	padding: 10px;
+	background: #f5f5f5;
+	list-style: none;
+
+}
+.search-area .conditions-class{
+	grid-row: 1;
+	grid-column: 2;
+	vertical-align: middle;
+	background: #f5f5f5;
+	display: inline-block;
+	list-style: none;
+	padding: 5px 0px;
+}
+.conditions-text-class{
+	display: inline-block;
+	color: #ffffff;
+	font-size: 15px;
+	padding: 3px 12px;
+	margin-right: 5px;
+	border-radius: 18px;
+	border:  0.5px solid #000099;
+	background: #3399ff;
+  	vertical-align: middle;
+  	display: inline-block;
+  	font-weight:bold;
+}
+.center{
+    text-align: center;
+}
+
+.modal{
+    display: none;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 10;
+}
+.modal-bg{
+    background: rgba(0,0,0,0.8);
+    height: 100vh;
+    position: absolute;
+    width: 100%;
+    z-index: 10;
+}
+.modal-content{
+    background: #fff;
+    left: 50%;
+    padding: 40px;
+    position: absolute;
+    top: 40%;
+    transform: translate(-50%,-50%);
+    width: auto;
+    z-index: 10;
+}
+.search-area .js-modal-close{
+	text-align: center;
+}
+.done{
+    color: #ffffff;
+	font-size: 15px;
+	padding: 3px 12px;
+	margin-right: 5px;
+	border:  0.5px solid #008000;
+	background: #ffa500;
+  	vertical-align: middle;
+  	display: inline-block;
+  	font-weight:bold;
+    margin: 20 47%;
+}
+.done:hover{
+	cursor : default;
+}

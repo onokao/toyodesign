@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>発注追加</title>
+    <meta name="Author" content="" />
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/ordering-registration.css">
+    <script src="https://kit.fontawesome.com/3da409cdf3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="common.js"></script>
+</head>
+
+<body>
+    <div id="insert-header"></div>
+    <script>
+        $(function() {
+            $("#insert-header").load("common.html header");
+        });
+    </script>
+    <div class="header-line"></div>
+
+    <main>
+        <div id="form">
+            <div class="contents">
+                <table class="condition-table">
+                    <thead>
+                        <tr>
+                            <td colspan="2" class="border-none">
+                                <p class="table-header">&emsp;発注追加</p>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tr>
+                        <th class="left-th">発注ID</th>
+                        <th class="right-th">拠点</th>
+                    </tr>
+                    <tr>
+                        <td class="left-td">
+                            <input type="text" id="orderingId" name="orderingId" maxlength="12" value="" required>
+                        </td>
+                        <td class="right-td">
+                            <select id="baseList" name="baseList">
+                                <option value="">選択してください</option>
+                                <option value="">大阪営業部</option>
+                                <option value="">東京営業部</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="alert left-alert" id="alt-orderingId">入力エラー時に表示されます
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left-th" id="content-locationCd">ロケーション</th>
+                        <th class="right-th" id="content-shelfCd">棚コード</th>
+                    </tr>
+                    <tr>
+                        <td class="left-td">
+                            <div id="div-loc">
+                                <select id="locationCd">
+                                    <option value=" ">選択してください</option>
+                                    <option value=" ">A</option>
+                                    <option value=" ">B</option>
+                                    <option value=" ">D</option>
+                                    <option value=" ">G</option>
+                                    <option value=" ">H</option>
+                                    <option value=" ">J</option>
+                                    <option value=" ">X</option>
+                                </select>
+                            </div>
+                        </td>
+                        <td class="right-td">
+                            <input type="text" id="shelfCd" onInput="onInputShelfCd()">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <span class="alert right-alert">
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left-th" id="content-partsId">部品ID</th>
+                        <th class="right-th">部品名</th>
+                    </tr>
+                    <tr>
+                        <td class="left-td">
+                            <input type="hidden" id="partsId" name="partsId" maxlength="8" value="">
+                            <div class="parts-name"><span>自動で表示されます</span></div>
+                        </td>
+                        <td class="right-td" id="partsName">
+                            <div class="parts-name"><span>自動で表示されます</span></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="alert left-alert">
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left-th">発注日</th>
+                        <th class="right-th">発注数</th>
+                    </tr>
+                    <tr>
+                        <td class="left-td">
+                            <input type="text" id="orderedDate" name="orderedDate" maxlength="10" value="" class="checkform">
+                        </td>
+                        <td class="right-td">
+                            <input type="text" id="orderingCount" name="orderingCount" maxlength="6" value="" class="checkform">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="alert left-alert" id="alt-orderedDate">
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                        <td>
+                            <span class="alert right-alert" id="alt-orderingCount">
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th class="left-th">ロットNO</th>
+                        <th class="right-th">部品単価</th>
+                    </tr>
+                    <tr>
+                        <td class="left-td">
+                            <input type="text" id="lotNo" name="lotNo" maxlength="8" value="">
+                        </td>
+                        <td class="right-td">
+                            <input type="text" id="price" name="price" maxlength="6" value="" class="checkform">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="alert left-alert" id="alt-lotNo">
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                        <td>
+                            <span class="alert right-alert" id="alt-orderingCount">入力エラー時に表示されます
+                                <!-- エラーメッセージ表示用のエリア -->
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="button">
+                    <input type="button" id="orderBtn" onclick="javascript: return submitCheck();" value="発注追加">
+                    <input type="button" id="backBtn" onclick="javascript:back('<%=OrderingListBean.getPreView()%>');" value="戻る">
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <font>東陽建設工機株式会社</font>
+    </footer>
+</body>
+
+</html>

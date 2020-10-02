@@ -1,0 +1,16 @@
+#searchArrivalDate, #searchSummary{
+    width: 13rem;
+    color: var(--primary-dark-color);
+    line-height: 2.5rem;
+    font-weight: bold;
+    font-size: 1.7rem;
+    padding: 0.1rem;
+    border: 0.1rem solid var(--line-color);
+}
+#searchArrivalDate{
+    margin-left: 1rem;
+    background-color: #FFFFFF;
+}
+#searchSummary{
+    background-color: #3DFF50;
+}

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <title>在庫一覧</title>
+    <meta name="Author" content="" />
+    <link rel="stylesheet" href="../css/common.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/stockList.css">
+    <script src="https://kit.fontawesome.com/3da409cdf3.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script type="text/javascript" src="../js/common.js"></script>
+    <script type="text/javascript" src="../js/stockList.js"></script>
+</head>
+
+<body>
+    <div id="insert-header"></div>
+    <script>
+        $(function() {
+            $("#insert-header").load("common.html header");
+        });
+    </script>
+    <main>
+        <form>
+            <div class="search-wrapper">
+                <div id="seacrh-header">
+                    <h1 class="page-title">
+                        在庫一覧
+                    </h1>
+                    <input type="text" name="search-input" id="main-search" placeholder="棚コードを入力してください">
+                    <button class="add-condition" onclick="return overlay()">検索条件追加</button>
+                    <button id="search-btn"><i class="fas fa-search"></i>検索</button>
+                    <button id="searchArrivalDate" onclick=" return arrival(1)">入荷日別モード</button>
+                    <button id="searchSummary" onclick="return summary(2)">SUMモード</button>
+                    <input id="menuDisplayed" type="hidden" value="0">
+                    <span id="menuIcon"><i class="fas fa-bars"></i></span>
+                </div>
+                <div id="seach-condition">
+                </div>
+            </div>
+            <div id="result-header">
+                <i class="fas fa-flag"></i>
+                <span class="data-cnt">20件</span>
+                <input type="checkbox" name="all-check" class="all-check">
+                <font>全選択</font>
+            </div>
+            <div id="table-wrapper">
+            </div>
+            <!-- オーバーレイ処理 -->
+            <div id="overlay"></div>
+            <!-- モーダルウィンドウ処理 -->
+            <div class="modalWindow">
+                <!--
+            <p id="message"></p>
+            <h1>詳細検索</h1>
+            <div id="input-conditions">
+            <select id="baseList" name="base-list">
+            <option>全拠点</option>
+            <option>大阪営業部</option>
+            <option>東京営業部</option>
+            </select>
+            <input type="text" name="location-cd">
+            <input type="text" name="shelf-cd1">~<input type="text" name="shelf-cd2">
+            <input type="text" name="word1">
+            <input type="text" name="word2">
+            <input type=text name="parts-id">
+            </div>
+            <input type="button" name="searchConditions" value="検索">
+            <p id="message"></p>
+            <button id="close" onclick="return closeModal()">戻る</button>
+-->
+                <div class="contents">
+                    <table class="condition-table">
+                        <thead>
+                            <tr>
+                                <td colspan="2" class="border-none">
+                                    <p class="table-header">&emsp;詳細検索</p>
+                                </td>
+                            </tr>
+                        </thead>
+                        <tr>
+                            <th class="left-th">拠点</th>
+                            <th class="right-th">ロケーション</th>
+                        </tr>
+                        <tr>
+                            <td class="left-td">
+                                <select id="baseList" name="baseList">
+                                    <option value="">選択してください</option>
+                                    <option value="">大阪営業部</option>
+                                    <option value="">東京営業部</option>
+                                </select>
+                            </td>
+                            <td class="right-td">
+                                <input type="text" id="content-locationCd" name="location-cd">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="alert left-alert" id="alt-orderingId">入力エラー時に表示されます
+                                    <!-- エラーメッセージ表示用のエリア -->
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="left-th" id="content-locationCd">ロケーション</th>
+                            <th class="right-th" id="content-shelfCd">棚コード</th>
+                        </tr>
+                        <tr>
+                            <td class="left-td">
+                                <input type="text" id="shelfCd" onInput="onInputShelfCd()">
+                            </td>
+                            <td class="right-td">
+                                <input type="text" id="shelfCd" onInput="onInputShelfCd()">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <span class="alert right-alert">
+                                    <!-- エラーメッセージ表示用のエリア -->
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="left-th" id="content-partsId">ワード1</th>
+                            <th class="right-th">ワード2</th>
+                        </tr>
+                        <tr>
+                            <td class="left-td">
+                                <input type="text" id="partsId" name="word1">
+                            </td>
+                            <td class="right-td" id="word2">
+                                <input type="text" id="partsId" name="word1">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="alert left-alert">
+                                    <!-- エラーメッセージ表示用のエリア -->
+                                </span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th class="left-th">年数指定</th>
+                            <th class="right-th">部品ID</th>
+                        </tr>
+                        <tr>
+                            <td class="left-td">
+                                <input type="text" id="orderedDate" name="orderedDate" maxlength="10" value="" class="checkform">
+                            </td>
+                            <td class="right-td">
+                                <input type="text" id="orderingCount" name="orderingCount" maxlength="6" value="" class="checkform">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="alert left-alert" id="alt-orderedDate">
+                                    <!-- エラーメッセージ表示用のエリア -->
+                                </span>
+                            </td>
+                            <td>
+                                <span class="alert right-alert" id="alt-orderingCount">
+                                    <!-- エラーメッセージ表示用のエリア -->
+                                </span>
+                            </td>
+                        </tr>
+
+                    </table>
+
+                    <div class="button">
+                        <input type="button" name="searchConditions" value="検索">
+                        <p id="message"></p>
+                        <button id="close" onclick="return closeModal()">戻る</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+        <script>
+            createTable();
+        </script>
+    </main>
+    <footer>
+        <font>東陽建設工機株式会社</font>
+    </footer>
+</body>
+
+</html>

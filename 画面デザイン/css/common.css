@@ -1,0 +1,287 @@
+:root{
+    --primary-dark-color: #000051;
+    --primary-color: #1A237E;
+    --primary-light-color: #534BAE;
+    --secondary-dark-color: #c9bc1f;
+    --basic-background-color: #EBEBEB;
+    --line-color: #707070;
+}
+
+
+/************************************************************************/
+/***    ページ全体の高さや余白などの基本設定     ***/
+/************************************************************************/
+* {
+    margin: 0;
+    padding: 0;
+    font-family: normal normal normal BIZ UDPGothic;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+
+body{
+    width: 100vw;
+    min-height: 100vh;
+}
+
+/************************************************************************/
+/***    ヘッダーCSS     ***/
+/************************************************************************/
+
+header {
+    width: 100%;
+    background-color: var(--primary-dark-color);
+    height: 6rem;
+    position: fixed;
+    top: 0;
+}
+header .nav-list {
+    padding: 1.5rem;
+    display: flex;
+    list-style: none;
+}
+
+/*ログアウト*/
+
+#logout{
+    margin: auto 0 auto auto;
+}
+#logout a{
+    font: normal normal normal 1.9rem BIZ UDPGothic;
+    height: 0.3rem;
+}
+.fa-sign-out-alt{
+   margin-left: 0.5rem;
+}
+
+header .nav-list-item {
+    padding-left: 6rem;
+    position: relative;
+    white-space: nowrap;        /* 文字列の折り返しをさせない */
+}
+header a {
+    color: #FFFFFF;
+    font: normal normal normal 2.2rem BIZ UDPGothic;
+    line-height: 3rem;
+    text-decoration: none; 
+    position: relative;
+}
+.header-line{
+	background-color: var(--secondary-dark-color);
+	position: fixed;			/* ヘッダーの固定 */
+    top: 6rem;					/* 位置(上0) */
+    left: 0;					/* 位置(右0) */
+  	width: 100%;				/* 横幅 */
+  	height: 0.3rem;				/* 縦幅 */
+}
+
+/*文字下にカーソルを充てるとラインが走る*/
+
+header a::after {
+  position: absolute;
+  bottom: -0.4rem;
+  left: 0;
+  content: '';
+  width: 100%;
+  height: 0.2rem;
+  background: #FFFFFF;
+  transform: scale(0, 1);
+  transform-origin: right top;
+  transition: transform .3s;
+}
+header a:hover::after{
+  transform-origin: left top;
+  transform: scale(1, 1);
+}
+
+/***************************/
+/***    検索条件追加欄     ***/
+/***************************/
+
+form .search-wrapper {
+    width: 100%;
+    position: fixed;
+    top: 6.3rem;
+}
+#seacrh-header {
+    background-color: var(--primary-color);
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    white-space: nowrap; 
+}
+form .page-title {
+    display: inline-block;
+    vertical-align: middle;		/* 縦方向の揃え位置 */
+    color: aliceblue;
+    text-shadow: 0px 0.3rem 0.6rem #000051;
+    padding-left: 4rem;
+    font-size: 3.8rem;
+}
+form input#main-search{
+    height: 2.5rem;
+    padding: 0.1rem;
+    margin-left: 4rem;
+    font-size: 2.2rem;
+    width: 20rem;
+}
+
+/* 検索入力欄 */
+input#main-search::placeholder {
+    color: #70707080;
+    opacity: 1;
+    font-size: 1.4rem;
+}
+
+.add-condition {
+    line-height: 2.5rem;
+    padding: 0.05rem;
+    width: 14rem;
+    color: var(--primary-dark-color);
+    margin-left: 1rem;
+    font-size: 1.7rem;
+}
+
+/* 検索ボタンアイコン */
+.fa-search{
+    margin-right: 0.4rem;
+    font-size: 1.8rem;
+    color: var(--primary-dark-color);
+}
+
+#search-btn {
+    line-height: 2.5rem;
+    width: 10rem;
+    margin-left: 1rem;
+    font-size: 1.5rem;
+    color: var(--primary-dark-color);
+}
+.fa-bars{
+    color: var(--secondary-dark-color);
+    margin-left: 1rem;
+    font-size: 2.5rem;
+}
+.fa-bars:hover, .fa-bars:focus, .fa-bars:active{
+    box-shadow: 0 0.1rem 0.6rem 0.3rem rgba(201, 188, 31, .4);
+    background-color: rgba(201, 188, 31, .4);
+    cursor: pointer;
+}
+/* メニューアイコンのアニメーション */
+#menu{
+    color: #ffffff;
+    z-index: 1;
+    list-style: none;
+    width: 11rem;
+    text-align: center;
+}
+
+/* メニューアイコン */
+#menu li:nth-child(1){
+    animation-delay: 0.10s;
+}
+#menu li:nth-child(2){
+    animation-delay: 0.20s;
+}
+#menu li:nth-child(3){
+    animation-delay: 0.30s;
+}
+#menu li:nth-child(4){
+    animation-delay: 0.40s;
+}
+#menu li{
+    background-color: var(--secondary-dark-color);
+    opacity: 0;
+    border: 0.1rem solid #ffffff;
+    animation-name: fadeIn;
+    animation-duration: 0.4s; /* アニメーションの長さ */
+    animation-fill-mode: forwards; /* アニメーション終了時のスタイルをアニメーション終了後でも適用させる */
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+
+/************************************************************************/
+/***    オーバレイとモーダル     ***/
+/************************************************************************/
+/*
+ * オーバーレイ
+ */
+#overlay {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.3);
+	display: none;
+	z-index: 2;
+ }
+/*
+ * モーダルウィンドウ
+ */
+.modalWindow {
+	width: 35rem;
+	height: 15rem;
+	position: fixed;
+	border: 0.2rem solid #000000;
+	background-color: #FFF;
+	display: none;
+	z-index: 3;
+	text-align: center;
+}
+/*
+ * 閉じるボタンの属性
+ */
+#close {
+	width: 9rem;
+	height: 4rem;
+	font-size: 1.2rem;
+    color: #FFF;						/* 文字色 */
+    background-color: #003300;		/* 背景色 */
+	border-radius: 0.3rem;					/* ボタンを丸くする */
+	border-style:none;
+	text-align: center;
+	margin-top: 2rem;
+}
+
+#close:hover {
+	background:#3300FF;
+	border: solid 0.2rem #3300FF;
+	color: #FFF;
+	text-decoration:none;
+	cursor: pointer;
+	cursor: hand;
+}
+/************************************************************************/
+/***    フッター     ***/
+/************************************************************************/
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+footer{
+    width: 100%;
+    background-color: var(--primary-dark-color);
+    height: 3.5rem;
+    line-height: 3.5rem;
+    text-align: right;
+    color: #ffffff;
+    font-size: 1.5rem;
+    position: fixed;
+    bottom: 0;
+}

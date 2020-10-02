@@ -1,0 +1,107 @@
+html, body{
+    margin: 0;					/* 領域外の余白の削除 */
+    padding: 0;					/* 領域内の余白の削除 */
+    width:100%;					/* 横幅100% */
+    height:100%;				/* 縦幅100% */
+    font-family: normal normal normal BIZ UDPGothic;
+}
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+
+ul{
+	margin: 0;
+	padding: 0;
+}
+
+#menu-box{
+	width: 100%;
+	height: 100%;
+    display: grid;
+    grid-template-rows: 7rem 1fr 3.3rem 3.5fr 3.5rem;
+    grid-template-columns: 1fr 38rem 1fr;
+}
+
+#menu-box .menu{
+    list-style: none;			/* リストマーカーの非表示 */
+    margin: 0;
+    grid-row: 3;
+	grid-column: 2;
+}
+
+/*
+ * メニューのリンク属性
+ */
+#menu-box ul.menu li a{
+    display:block;
+    text-align:center;
+    width:38rem;
+    font-size:2rem;
+    height:5rem;
+    color:#ffffff;
+    line-height: 5rem;
+    text-decoration:none;		/* テキスト傍線のつけ方 */
+    background:#000051;
+    margin: 0 0 2rem 0;
+    border-radius: 1.2rem;
+}
+/*
+ * メニューがアクティブな時
+ */
+#menu-box ul.menu li a:hover{
+    opacity: 0.5;
+    cursor: pointer;
+}
+/*
+ * ヘッダータイトルの属性
+ */
+#header-title{
+    position: fixed;			/* ヘッダーの固定 */
+    top: 0rem;					/* 位置(上0rem) */
+    left: 0rem;					/* 位置(右0rem) */
+    width: 100%;				/* 横幅 */
+    height: 6rem;				/* 縦幅 */
+    background-color:#000051;	/* 背景色 */
+}
+.header-line{
+	background-color: #C9BC1F;
+	position: fixed;			/* ヘッダーの固定 */
+    top: 6rem;					/* 位置(上0rem) */
+    left: 0rem;					/* 位置(右0rem) */
+  	width: 100%;				/* 横幅 */
+  	height: 1rem;				/* 縦幅 */
+}
+/*
+ * 業務名の属性
+ */
+.business-name{
+    margin:0 0 0 2rem;			/* 領域外の余白の削除 */
+    line-height: 6rem;
+    color: #ffffff;				/* 文字色 */
+    font-size: 2.5rem;
+}
+/*
+ * フッターの固定
+ */
+#footer{
+    position: fixed;			/* フッターの固定 */
+    bottom: 0rem;				/* 位置(下0rem) */
+    left: 0rem;					/* 位置(左0rem) */
+    width: 100%;				/* 横幅 */
+    height: 3.5rem;				/* 縦幅 */
+    background-color: #000051;	/* 背景色 */
+}
+/*
+ * フッター文字の属性
+ */
+.footer-name{
+    margin: 0 2rem 0 0;
+    font-size: 1.8rem;			/* フォントサイズ */
+    line-height: 4rem;			/* 行の高 */
+    text-align: right;			/* 水平方向の揃え位置 */
+    color: #ffffff;				/* 文字色 */
+}
+

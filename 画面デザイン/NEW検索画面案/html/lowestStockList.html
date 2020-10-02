@@ -1,0 +1,576 @@
+
+
+<html>
+<head>
+
+<title>最低在庫不足画面</title>
+<link rel="stylesheet" type="text/css" href="../css/lowest-stock.css" />
+<script src="../jquery-3.3.1.min.js"></script>
+<script src="https://kit.fontawesome.com/90f12b45bc.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/lowestStockList.js"></script>
+
+
+
+</head>
+<body> 
+    <div id="header-title">
+        <p class="business-name">■最低在庫不足画面</p>
+    </div>
+    <div id="header">
+        <table class="header-table">
+            <tr>
+                <td><small>F1</small></td>
+                <td><small>F2</small></td>
+                <td><small>F3</small></td>
+                <td><small>F12</small></td>
+            </tr>
+            <tr>
+                <td><a class="menu" href="javascript:initSearch('1');" id="search">
+                 <span><b>検索</b></span></a></td>
+                <td><a class="menu" href="">
+                 <span><b>CSV出力</b></span></a></td>
+                <td><a class="menu" href="">
+                 <span><b>発注</b></span></a></td>
+                <td><a class="menu" href="" >
+                 <span><b>戻る</b></span></a></td>
+            </tr>
+        </table>
+    </div>
+    <div id="message">
+        <p class="error-messege">
+           
+        </p>
+    </div>
+   
+    	<div id="form">
+            <div class="search-area">
+            	<table class="search-area-top-table">
+            		<tr>
+            			<td class="search-input height-34">
+            				<input type="text" name="shelfCdWord1" placeholder="棚コードを入力してください"
+            				 id="shelfCdWord1_1" value="" maxlength="30" class="height-34"
+            				 onChange="shelfCdWordInput(shelfCdWord1_1,shelfCdWord2)">
+						</td>
+						<td class="search-button">
+        					<button onclick="search();" id="searchBtn"><i class="fas fa-search fa-fw"></i>検索</button>
+        				</td>
+        				<td class="js-modal-open" href="">
+        					<span class="modal-open">
+								<i class="fas fa-plus-circle fa-fw"></i> 検索条件追加
+        					</span>
+        				</td>
+        			</tr>
+        		</table>
+                <ul class="conditions">
+   					<li class="detailed-conditions">
+   						<span>詳細条件：</span>
+   					</li>
+   					<li class="conditions-class">
+
+   					</li>
+
+        		</ul>
+			</div>
+			<div class="modal js-modal">
+   				<div class="modal-bg js-modal-close"></div>
+        		<div class="modal-content">
+            		<table class="top-table">
+                   		<tr>
+						<th>拠点</th>
+						<td>
+                            <select name="baseList"id="baseList">
+	                       	 <option value="" id="base-kbn" selected="selected"></option>
+				            <option value="1001">大阪営業部</option>
+                            <option value="2001">東京営業部</option>
+								
+							</select>
+						</td>
+						<th>ロケーション</th>
+						<td><input type="text" name="locationCd" id="locationCd"
+                            value="" maxlength="30" size="62">
+                         </td>
+					</tr>
+					<tr>
+						<th>棚コード</th>
+						<td><input type="text" name="shelfCdWord1" id="shelfCdWord1_2"
+							value="" maxlength="30" size="62"></td>
+						<th>～</th>
+						<td><input type="text" name="shelfCdWord2"id="shelfCdWord2"
+							value="" maxlength="30" size="62"></td>
+					</tr>
+                    <tr>
+                        <th>ワード１</th>
+                        <td><input type="text" name="word1" id="word1"
+                            value="" maxlength="30" size="62"></td>
+                        <th>ワード２</th>
+                        <td><input type="text" name="word2" id="word2"
+                            value="" maxlength="30" size="62"></td>
+                    </tr>
+					<tr>
+                        <td colspan="4" class="search-clum">
+					    <div id="mode-clum" class="rihgt">
+					    <button onclick="search_2();" id="searchBtn"><i class="fas fa-search fa-fw"></i>検索</button>
+					    </div>
+                    </tr>
+                    </table>
+                       
+            		<div class="js-modal-close" id="show-details-btn" href="" class="center" onClick="baseListSelect(baseList);locationCdInput(locationCd);shelfCdWordInput(shelfCdWord1_1,shelfCdWord2);word1Input(word1);word2Input(word2);">
+                        <span class="done">完了</span>
+                    </div>
+        		</div><!--modal-content-->
+    		</div><!--modal-->
+
+			<div id="list">
+                <table class="tbody-result">
+					<tr>
+						<td class="tbody-number">検索結果一覧（10件）</td>
+                    </tr>
+                </table>
+
+                <!-- 検索結果表示欄　ヘッダー -->
+				<div class="list-header" id="listHeader">
+					<table class="listHeaderTable">
+						<tr class="top">
+							<th class="check-box" ><font size="2">選択</font></th>
+							<th id="base-th"><a>拠点</a></th>
+							<th id="location-th"><a>ロケーション</a></th>
+							<th class="shelf-code"><a>棚コード</a></th>
+							<th class="model-name"><a>機種名</a></th>
+							<th class="parts-id"><a>部品ID</a></th>
+							<th class="parts-name"><a>部品名</a></th>
+							<th class="drawing-no"><a>図番/型式</a></th>
+							<th class="stocks-count"><a>在庫数</a></th>
+							<th class="ordering-count"><a>発注数</a></th>
+							<th class="lowest-stock-count"><a>最低在庫数</a></th>
+						</tr>
+					</table>
+				</div>
+
+				<!-- 検索結果表示欄  -->
+				<div id="listData" onscroll="listScroll();">
+					<table class="list-table">
+                              <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H011-A001
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3635
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料 塗料用ｼﾝﾅｰ
+                                </td>
+                                
+                                <td class="drawing-no">
+                                	塗料用ｼﾝﾅｰ	
+                                </td>
+                                <td class="stocks-count">
+                                    2
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H011-A002
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3634
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料 東陽色塗料
+                                </td>
+                                <td class="drawing-no">
+                                    東陽色塗料
+                                </td>
+                                <td class="stocks-count">
+                                    0 
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H012-A003
+                                </td>
+                                <td class="model-name">
+                                    
+                                </td>
+                                <td class="parts-id">
+                                    4112	
+                                </td>
+                                <td class="parts-name">
+                                    ｶｾｯﾄEPｸﾞﾘｽ 400g 2番
+                                </td>
+                                <td class="drawing-no">
+                                		
+                                </td>
+                                <td class="stocks-count">
+                                    6
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H012-A004
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3640
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料ﾁｪｰﾝｵｲﾙｽﾌﾟﾚｰ
+                                </td>
+                                <td class="drawing-no">
+                                	ﾁｪｰﾝｵｲﾙｽﾌﾟﾚｰ	
+                                </td>
+                                <td class="stocks-count">
+                                    45
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H012-B002
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3639
+                                </td>
+                                <td class="parts-name">
+                                  ｵｲﾙ･塗料 ﾍﾙﾊﾟｰｽﾌﾟﾚｰ
+                                </td>
+                                <td class="drawing-no">
+                                	ﾍﾙﾊﾟｰｽﾌﾟﾚｰ	
+                                </td>
+                                <td class="stocks-count">
+                                    27
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H013-A001
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3643
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料 ﾆｭｰﾏﾛｯｸ油1L
+                                </td>
+                                <td class="drawing-no">
+                                	ﾆｭｰﾏﾛｯｸ油 1L	
+                                </td>
+                                <td class="stocks-count">
+                                    1
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H013-A002
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3644
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料 ｸﾞﾘｽﾁｭｰﾌﾞMMG-80
+                                </td>
+                                <td class="drawing-no">
+                                	ｸﾞﾘｽﾁｭｰﾌﾞ(MMG-80)	
+                                </td>
+                                <td class="stocks-count">
+                                    23
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H013-A003
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3641
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料YSﾀｰﾋﾞﾝ56
+                                </td>
+                                <td class="drawing-no">
+                                	YSﾀｰﾋﾞﾝ 56	
+                                </td>
+                                <td class="stocks-count">
+                                    1
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H013-B001
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3654
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ 日立ﾍﾞﾋﾞｺﾝ純正ｵｲﾙ1ℓ
+                                </td>
+                                <td class="drawing-no">
+                                	日立ﾍﾞﾋﾞｺﾝ純正ｵｲﾙ1ℓ	
+                                </td>
+                                <td class="stocks-count">
+                                    6
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                        <tr class="down">
+                                <td class="check-box">
+                                	<input type="checkbox">
+                            	</td>
+                                <td class="base-code">
+                                	1001
+                                </td>
+                                <td class="base-name">
+                                	大阪営業部
+                                </td>
+                                <td class="location-code">
+                                    H
+                                </td>
+                                <td class="location-name">
+                                    倉庫エリアH
+                                </td>
+                                <td class="shelf-code">
+                                    H013-B002
+                                </td>
+                                <td class="model-name">
+                                		
+                                </td>
+                                <td class="parts-id">
+                                    3633
+                                </td>
+                                <td class="parts-name">
+                                    ｵｲﾙ･塗料 油圧ｵｲﾙ2ﾘｯﾄﾙ缶
+                                </td>
+                                <td class="drawing-no">
+                                	油圧ｵｲﾙ2ﾘｯﾄﾙ缶	
+                                </td>
+                                <td class="stocks-count">
+                                    26
+                                </td>
+                                <td class="ordering-count">
+                                    0
+                                </td>
+                                <td class="lowest-stock-count">
+                                    100
+                                </td>
+                              </tr>
+                      
+                        </table>
+                    </div>
+
+                  
+              </div>
+        </div>
+   
+
+    <div id="footer">
+        <p class="footer-name">東陽建設工機株式会社</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+
+<title>メニュー</title>
+<link rel="stylesheet" type="text/css" href="../css/login.css" />
+<script src="../jquery-3.3.1.min.js"></script>
+<script src="https://kit.fontawesome.com/90f12b45bc.js" crossorigin="anonymous"></script>
+<script type="text/javascript" src="../js/login.js"></script>
+
+
+
+</head>
+<body>
+<div id="header-title">
+    <span class="logo">TOYO</span><span class="system-title">在 庫 管 理 シ ス テ ム</span>
+</div>
+<div class="header-line"></div>
+
+<div id="form">
+    <p class="form-title">LOGIN</p>
+    <!-- ログイン操作をWeb認証に指示するための記述 -->
+    <div method="post">
+    	<p class="error-messege">&nbsp;</p>
+        <p class="userid"><input type="text" name="userid" maxlength="32" placeholder="ユーザーID" /></p>
+        <p class="password"><input type="password" name="password" maxlength="32" placeholder="パスワード" /></p>
+        <p class="check"><input type="checkbox" name="passwordSaveFlg" value="1" id="checkBox"/>
+        <span class="passwordSave"><label for="checkBox">ログイン情報を保存</label></span></p>
+        <br>
+        <p class="submit"><input type="submit" value="ログイン" onclick="location.href='./menu.html'" /></p>
+    </div>
+</div>
+<div id="footer">
+    <p class="footer-name">東陽建設工機株式会社</p>
+</div>
+</body>
+</html>

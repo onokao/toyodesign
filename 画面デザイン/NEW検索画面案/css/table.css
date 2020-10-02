@@ -1,0 +1,188 @@
+:root{
+    --primary-dark-color: #000051;
+    --primary-color: #1A237E;
+    --primary-light-color: #534BAE;
+    --secondary-dark-color: #c9bc1f;
+    --basic-background-color: #EBEBEB;
+    --line-color: #707070;
+    
+  --column-height: 45px;
+  --check-box: 25px;
+  --model-name: 150px;
+  --parts-id: 90px;
+  --parts-name: 160px;
+  --parts-kana: 120px;
+  --drawing-no: 130px;
+  --parts-img: 100px;
+  --img-input: 79.5px;
+  --img-button: 20px;
+  --cost-price: 80px;
+  --selling-price: 80px;
+  --supplier: 100px;
+  --manufacturer: 100px;
+  --material: 100px;
+  --parts-size: 100px;
+  --remarks: 110px;
+  --bom-cd: 100px;
+  --classification-cd: 100px;
+    
+  --column-sum-width: 1960px;					/* カラムの長さの合計値 ヘッダーの実寸(横) */
+}
+.check-box{
+    width: var(--check-box);
+}
+.modelName{
+    width: var(--model-name);
+}
+.partsId{
+    width: var(--parts-id);
+}
+.partsName, .partsName2, .partsName3{
+    width: var(--parts-name);
+}
+.partsKana, .partsKana2, .partsKana3{
+    width: var(--parts-kana);
+}
+.partsImg, .partsImg2, .partsImg3{
+    width: var(--parts-img);
+} 
+.costPrice{
+    width: var(--cost-price);
+}
+.sellingPrice{
+    width: var(--selling-price);
+}
+.supplier{
+    width: var(--supplier);
+}
+.manufacturer{
+    width: var(--manufacturer);
+}
+.material{
+    width: var(--material);
+}
+.size{
+    width: var(--parts-size);
+}
+.remarks, .remarks2{
+    width: var(--remarks);
+}
+.BOMcode{
+    width: var(--bom-cd);
+}
+.clasification{
+    width: var(--classification-cd);
+}
+/***********************************/
+/***    何の検索条件か残す箇所     *****/
+/***********************************/
+
+#seach-condition {
+    width: 100%;
+    height: 60px;
+    background-color: var(--basic-background-color);
+}
+
+/***********************************/
+/***    検索結果数と全選択の欄    *****/
+/***********************************/
+#result-header {
+    background-color: var(--basic-background-color);
+    color:var(--primary-dark-color);
+    font-weight: bold;
+    width: 170px;
+    margin: 30px 20px 0 20px;
+    border-style: none;
+    font-size: 20px;
+    position: relative;
+    top: 170px;
+}
+.data-cnt{
+    margin-left: 3px;
+    width: 80%;
+}
+
+.all-check {
+    margin-right: 3px;
+    margin-left: 15px;
+    text-align: center;
+}
+/************************************************************************/
+/***    テーブルCSS     ***/
+/************************************************************************/
+
+#table-wrapper {
+    position: relative;
+    top: 170px;
+    left: 20px;
+    overflow-x: auto;
+    width: var(--column-sum-width);
+    max-height: calc(100vh - 300px);
+    max-width:  calc(100vw - 50px);
+}
+
+/***********************************/
+/***    検索結果テーブル    *****/
+/***********************************/
+
+#table-wrapper table {
+    line-height: 1.5;
+    width: var(--column-sum-width);
+    table-layout: fixed;
+}
+
+tr:nth-child(even) {
+  background: var(--basic-background-color);
+ }
+
+td {
+    padding: 2px;
+    vertical-align: center;
+}
+th{
+    padding: 2px;
+    font-weight: bold;
+    vertical-align: center;
+    background: var(--primary-dark-color);
+    color: #ffffff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    /* tbody内のセルより手前に表示する */
+    z-index: 1;
+}
+th:first-child {
+  /* 横スクロール時に固定する */
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    border: 1px solid var(--line-color);
+    height: var(--column-height);
+}
+/************************************************************************/
+/***    フッター     ***/
+/************************************************************************/
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+main {
+  flex: 1;
+}
+footer{
+    width: 100%;
+    background-color: var(--primary-dark-color);
+    height: 35px;
+    line-height: 35px;
+    text-align: right;
+    color: #ffffff;
+    font-size: 15px;
+    position: fixed;
+    bottom: 0;
+}

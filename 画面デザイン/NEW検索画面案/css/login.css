@@ -1,0 +1,201 @@
+/*
+ * body,p,form,inputタグの設定
+ */
+body,p,form,input{
+    margin: 0;						/* 領域外の余白の削除 */
+}
+html, body{
+    margin: 0;					/* 領域外の余白の削除 */
+    padding: 0;					/* 領域内の余白の削除 */
+    width:100%;					/* 横幅100% */
+    height:100%;				/* 縦幅100% */
+    font-family: normal normal normal BIZ UDPGothic;
+}
+
+/*
+ * ヘッダータイトルの属性
+ */
+#header-title{
+    position: fixed;			/* ヘッダーの固定 */
+    top: 0px;					/* 位置(上0px) */
+    left: 0px;					/* 位置(右0px) */
+    width: 100%;				/* 横幅 */
+    height: 70px;				/* 縦幅 */
+    background-color:#000051;	/* 背景色 */
+}
+.header-line{
+	background-color: #C9BC1F;
+	position: fixed;			/* ヘッダーの固定 */
+    top: 70px;					/* 位置(上0px) */
+    left: 0px;					/* 位置(右0px) */
+  	width: 100%;				/* 横幅 */
+  	height: 10px;				/* 縦幅 */
+}
+/*
+ * システムタイトルの属性
+ */
+ .logo{
+ 	font-size: 60px;
+ 	line-height: 70px;
+    color: #ffffff;
+    text-shadow: 0px 3px 6px #FFFFFF;
+    margin: 0px 0px 0px 40px;
+ }
+.system-title{
+    font-size: 45px;					/* フォントサイズ */
+    text-align: center;					/* 揃え位置 */
+    line-height: 70px;
+    color: #ffffff;						/* 文字色 */
+    text-shadow: 0px 3px 6px #FFFFFF;	/* テキスト影(横方向ずれ,下方向ずれ,ぼかし具合,影の色) */
+    margin: 0px 0px 0px 25px;
+}
+
+/*
+ * フッターの固定
+ */
+#footer{
+    position: fixed;			/* フッターの固定 */
+    bottom: 0px;				/* 位置(下0px) */
+    left: 0px;					/* 位置(左0px) */
+    width: 100%;				/* 横幅 */
+    height: 35px;				/* 縦幅 */
+    background-color: #000051;	/* 背景色 */
+}
+/*
+ * フッター文字の属性
+ */
+.footer-name{
+    margin: 0 20px 0 0;
+    font-size: 18px;			/* フォントサイズ */
+    line-height: 40px;			/* 行の高 */
+    text-align: right;			/* 水平方向の揃え位置 */
+    color: #ffffff;				/* 文字色 */
+}
+
+/*
+ * ボディの定義
+ */
+body{
+ 	display: grid;
+    grid-template-rows: 80px 1fr 375px 1.5fr 35px;
+    grid-template-columns: 1fr 500px 1fr;
+ }
+div#form{
+    grid-row: 3;
+	grid-column: 2;
+    width: 495px;						/* 横幅 */
+    height: 370px;
+    margin: 0px;
+    padding: 0px;
+    border: 2.5px solid #707070;		/* 境界線 */
+}
+/*
+ * ボディ文字の定義
+ */
+form p{
+    font-size: 14px;					/* フォントサイズ */
+}
+/*
+ * FORMタイトルの属性
+*/
+.form-title{
+	color: #000051;
+    font-size: 30px;					/* フォントサイズ */
+    text-align: left;					/* 行揃えの位置 */
+    margin: 25px 20px 10px 20px;		/* 領域外の余白の下 */
+    border-bottom:solid 1px #707070;	/* 下ボーダー */
+}
+
+/*
+ * エラーメッセージの属性
+ */
+.error-messege{
+    font-size: 14px;					/* フォントサイズ */
+    text-align: center;					/* 揃え位置 */
+    margin-bottom: 10px;				/* 下マージン */
+    color: #dd0000;						/* 文字色 */
+}
+
+/*
+ * ユーザーIDの属性
+*/
+.userid {
+    margin: 10px 20px 20px 40px;
+}
+
+/*
+ * パスワードの属性
+*/
+.password {
+    margin: 20px 40px;
+}
+
+/*
+ * 入力項目の属性
+*/
+input[type="text"],
+input[type="password"] {
+    width: 400px;						/* 横幅 */
+    padding: 4px;						/* 領域内の余白 */
+    height: 30px;
+    font-size: 16px;					/* フォントサイズ */
+    margin: auto;						/* 領域外の余白 */
+}
+#checkBox{
+	width: 20px;
+	height: 20px;
+	vertical-align: middle;
+	margin: 0px 0px 0px 40px;
+}
+#checkBox:hover{
+	cursor: pointer;
+}
+.passwordSave{
+	color: #000051;
+    font-size: 16px;
+	vertical-align: middle;
+    text-decoration:underline;
+}
+.passwordSave label:hover{
+	cursor: pointer;
+}
+
+/*
+ * ログインボタンの属性
+*/
+.submit{
+    text-align: center;					/* 行揃えの位置 */
+}
+/*
+ * ボディの定義
+ */
+#form{
+    background:#ebebeb;					/* 背景スタイル */
+    border-radius: 12px;				/* ボックスコーナーの角丸 */
+    color: #ffffff;						/* 文字色 */
+    font-size: 20px;					/* フォントサイズ */
+    padding: 20px 20px 20px 20px;		/* 領域内の余白(上右下左) */
+    text-decoration: none;				/* テキスト装飾 */
+}
+
+/*
+ * ログインボタンの属性
+*/
+.submit input {
+    background: #000051;				/* 背景スタイル */
+    border-radius: 8px;					/* ボックスコーナーの角丸 */
+    box-shadow: 1px 1px 3px #666666;	/* ボックスの影 */
+    font-family: Courier New;			/* フォントの種類 */
+    color: #FFFFFF;						/* 文字色 */
+    font-size: 16px;					/* フォントサイズ */
+    padding: 10px 100px 10px 100px;		/* 領域内の余白(上右下左) */
+    text-decoration: none;				/* テキスト装飾 */
+}
+
+/*
+ * ログインボタンの属性(フォーカス時)
+*/
+.submit input:hover {
+    opacity: 0.5;
+    text-decoration: none;				/* テキスト装飾 */
+}

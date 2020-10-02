@@ -1,0 +1,175 @@
+/*
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
+*/
+/*
+.header-line{
+	background-color: #C9BC1F;
+*/
+/*	position: fixed;			/* ヘッダーの固定 */
+/*    top: 6rem;					/* 位置(上0rem) */
+/*    left: 0rem;					/* 位置(右0rem) */
+/*  	width: 100%;				/* 横幅 */
+/*  	height: 1rem;				/* 縦幅 */
+/*
+}
+#form{
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 7rem 1fr 60rem 1fr 3.5rem;
+    grid-template-columns: 1fr 60rem 1fr;
+    background-color: #1A237E;
+}
+#form .contents{
+    grid-row: 3;
+    grid-column: 2;
+    display: grid;
+    grid-template-rows: 50rem 10rem;
+    grid-template-columns: 1fr;
+    background-color: #ffffff;
+    border-radius: 1.8rem;
+}
+*/
+/*
+ * テーブルの属性
+ */
+.contents table{
+    grid-row: 1;
+    grid-column: 1;
+	margin: 0rem;
+    width: 60rem;
+    background-color: #ffffff;
+    border-radius: 1.8rem;
+}
+.contents table thead{
+    border: none;
+}
+.border-none{
+    border: none;
+    border-radius: 1.8rem;
+}
+.table-header{
+    color: #000051;
+    font-size: 2rem;
+    font-weight: bold;
+    border-bottom:solid 1rem #707070;	/* 下ボーダー */
+    margin: 2rem 2.5rem 1rem 2.5rem;
+}
+.condition-table{
+    height: 50rem
+}
+/*
+ * ラベルの属性
+ */
+.contents th{
+    color: #000051;				/* 文字色 */
+    text-align: left;				/* 文字左寄せ */
+    background-color: #ffffff;
+    border: none;
+    font-weight: 100;
+    font-size: 1.5rem;
+}
+.contents td{
+    color: #000000;				/* 文字色 */
+    background-color: #ffffff;
+    border: none;  
+    text-align: left;				/* 文字左寄せ */
+}
+
+.left-th{
+    height: 2rem;
+    margin: 0rem 2rem 0rem 0rem;
+    padding: 0rem 0rem 0rem 3rem;
+}
+.left-td{
+    width: 20rem;
+    margin:  0rem 0rem 0rem 0rem;
+    padding: 0rem 0rem 0rem 3rem;
+}
+.right-th{
+    margin: 0rem 2rem 0rem 0rem;
+    padding: 0rem;
+}
+.right-td{
+    width: 20rem;
+    margin:  0rem;
+    padding: 0rem;
+}
+.condition-table input, select{
+    width: 70%;
+    background-color: #ffffff;
+}
+
+.parts-name{
+    width: 70%;
+    border-bottom:solid 0.3rem #707070;
+}
+
+/*
+ * 発注追加ボタンの属性
+ */
+.contents .button {
+	text-align: center;			/* ボタンを真ん中に持ってくる */
+    grid-row: 2;
+    grid-column: 1;
+}
+.button input{
+	font-size: 2rem;					/* フォントサイズ */
+    padding: 0.8rem 0.8rem;
+    border:0rem none;				/* 境界線 */
+    background-color: #000051;	/* 背景色 */
+    color: #ffffff;				/* 文字色 */
+    width: 10rem;					/* 横幅 */
+    display: inline-block;			/* 横並びにする */
+    margin: 2rem 2.5rem;
+	border-radius: 0.7rem;
+	border: solid 0.2rem #707070;
+}
+
+.button input:hover{
+    opacity: 0.5;
+    text-decoration:none;
+    cursor: pointer;
+	cursor: hand;
+}
+/*
+ * 戻るボタン
+ */
+#backBtn{
+	background-color: #ffffff;
+	color: #000051;
+	width:10rem;
+}
+
+#backBtn:hover{
+    opacity: 0.5;
+    text-decoration:none;
+    cursor: pointer;
+	cursor: hand;
+}
+.alert {
+	font-size: 1.3rem;
+	color: red;                             /* 文字色(赤色) */
+	background-color: #fee;                 /* 背景色(淡い赤色) */
+	background-image: url("alerticon.png"); /* 背景画像(警告アイコンを表示) */
+	background-repeat: no-repeat;           /* 背景画像の繰り返しをナシに */
+	background-position: 0.35rem center;   /* 背景画像の掲載位置(左端から0.35rem・上下方向の中央) */
+	display: inline-block;                /* インラインブロック化 */
+	border-radius: 0.5rem;                 /* 角丸(半径0.5文字分) */
+}
+/* ▼入力チェック結果でエラーがない場合は非表示にする */
+.alert:empty { display: hidden; }
+
+.left-alert{
+    padding: 0.2rem 1rem;
+    margin: 0rem 2rem 1rem 3rem;
+}
+.right-alert{
+    padding: 0.2rem 1rem;
+    margin: 0rem 2rem 1rem 0rem;
+}

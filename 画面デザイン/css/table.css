@@ -1,0 +1,158 @@
+:root{
+    
+  --column-height: 4.5rem;
+  --check-box: 2.5rem;
+  --model-name: 15rem;
+  --parts-id: 9rem;
+  --parts-name: 16rem;
+  --parts-kana: 12rem;
+  --drawing-no: 13rem;
+  --parts-img: 10rem;
+  --img-input: 7.95rem;
+  --img-button: 2rem;
+  --cost-price: 8rem;
+  --selling-price: 8rem;
+  --supplier: 10rem;
+  --manufacturer: 10rem;
+  --material: 10rem;
+  --parts-size: 10rem;
+  --remarks: 11rem;
+  --bom-cd: 10rem;
+  --classification-cd: 10rem;
+    
+  --column-sum-width: 196rem;					/* カラムの長さの合計値 ヘッダーの実寸(横) */
+}
+.check-box{
+    width: var(--check-box);
+}
+.modelName{
+    width: var(--model-name);
+}
+.partsId{
+    width: var(--parts-id);
+}
+.partsName, .partsName2, .partsName3{
+    width: var(--parts-name);
+}
+.partsKana, .partsKana2, .partsKana3{
+    width: var(--parts-kana);
+}
+.partsImg, .partsImg2, .partsImg3{
+    width: var(--parts-img);
+} 
+.costPrice{
+    width: var(--cost-price);
+}
+.sellingPrice{
+    width: var(--selling-price);
+}
+.supplier{
+    width: var(--supplier);
+}
+.manufacturer{
+    width: var(--manufacturer);
+}
+.material{
+    width: var(--material);
+}
+.size{
+    width: var(--parts-size);
+}
+.remarks, .remarks2{
+    width: var(--remarks);
+}
+.BOMcode{
+    width: var(--bom-cd);
+}
+.clasification{
+    width: var(--classification-cd);
+}
+/***********************************/
+/***    何の検索条件か残す箇所     *****/
+/***********************************/
+
+#seach-condition {
+    width: 100%;
+    height: 6rem;
+    background-color: var(--basic-background-color);
+}
+
+/***********************************/
+/***    検索結果数と全選択の欄    *****/
+/***********************************/
+#result-header {
+    color:var(--primary-dark-color);
+    font-weight: bold;
+    width: 20rem;
+    margin: 3rem 2rem 0 2rem;
+    border-style: none;
+    font-size: 2rem;
+    position: relative;
+    top: 18rem;
+}
+.data-cnt{
+    margin-left: 0.3rem;
+    width: 80%;
+}
+
+.all-check {
+    margin-right: 0.3rem;
+    margin-left: 1.5rem;
+    text-align: center;
+}
+/************************************************************************/
+/***    テーブルCSS     ***/
+/************************************************************************/
+
+#table-wrapper {
+    position: relative;
+    top: 18rem;
+    left: 2rem;
+    overflow-x: auto;
+    width: var(--column-sum-width);
+    max-height: calc(100vh - 30rem);
+    max-width:  calc(100vw - 5rem);
+}
+
+/***********************************/
+/***    検索結果テーブル    *****/
+/***********************************/
+
+#table-wrapper table {
+    line-height: 1.5rem;
+    width: var(--column-sum-width);
+    table-layout: fixed;
+}
+
+tr:nth-child(even) {
+  background: var(--basic-background-color);
+ }
+
+td {
+    padding: 0.2rem;
+    vertical-align: center;
+}
+th{
+    padding: 0.2rem;
+    font-weight: bold;
+    vertical-align: center;
+    background: var(--primary-dark-color);
+    color: #ffffff;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    /* tbody内のセルより手前に表示する */
+    z-index: 1;
+}
+th:first-child {
+  /* 横スクロール時に固定する */
+  position: -webkit-sticky;
+  position: sticky;
+  left: 0;
+}
+
+table, th, td{
+    border-collapse: collapse;
+    border: 0.1rem solid var(--line-color);
+    height: var(--column-height);
+}
