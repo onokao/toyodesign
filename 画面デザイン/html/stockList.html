@@ -50,129 +50,63 @@
             <!-- オーバーレイ処理 -->
             <div id="overlay"></div>
             <!-- モーダルウィンドウ処理 -->
-            <div class="modalWindow">
-                <!--
-            <p id="message"></p>
-            <h1>詳細検索</h1>
-            <div id="input-conditions">
-            <select id="baseList" name="base-list">
-            <option>全拠点</option>
-            <option>大阪営業部</option>
-            <option>東京営業部</option>
-            </select>
-            <input type="text" name="location-cd">
-            <input type="text" name="shelf-cd1">~<input type="text" name="shelf-cd2">
-            <input type="text" name="word1">
-            <input type="text" name="word2">
-            <input type=text name="parts-id">
-            </div>
-            <input type="button" name="searchConditions" value="検索">
-            <p id="message"></p>
-            <button id="close" onclick="return closeModal()">戻る</button>
--->
-                <div class="contents">
-                    <table class="condition-table">
-                        <thead>
-                            <tr>
-                                <td colspan="2" class="border-none">
-                                    <p class="table-header">&emsp;詳細検索</p>
-                                </td>
-                            </tr>
-                        </thead>
-                        <tr>
-                            <th class="left-th">拠点</th>
-                            <th class="right-th">ロケーション</th>
-                        </tr>
-                        <tr>
-                            <td class="left-td">
-                                <select id="baseList" name="baseList">
-                                    <option value="">選択してください</option>
-                                    <option value="">大阪営業部</option>
-                                    <option value="">東京営業部</option>
-                                </select>
-                            </td>
-                            <td class="right-td">
-                                <input type="text" id="content-locationCd" name="location-cd">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="alert left-alert" id="alt-orderingId">入力エラー時に表示されます
-                                    <!-- エラーメッセージ表示用のエリア -->
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="left-th" id="content-locationCd">ロケーション</th>
-                            <th class="right-th" id="content-shelfCd">棚コード</th>
-                        </tr>
-                        <tr>
-                            <td class="left-td">
-                                <input type="text" id="shelfCd" onInput="onInputShelfCd()">
-                            </td>
-                            <td class="right-td">
-                                <input type="text" id="shelfCd" onInput="onInputShelfCd()">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                            </td>
-                            <td>
-                                <span class="alert right-alert">
-                                    <!-- エラーメッセージ表示用のエリア -->
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="left-th" id="content-partsId">ワード1</th>
-                            <th class="right-th">ワード2</th>
-                        </tr>
-                        <tr>
-                            <td class="left-td">
-                                <input type="text" id="partsId" name="word1">
-                            </td>
-                            <td class="right-td" id="word2">
-                                <input type="text" id="partsId" name="word1">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="alert left-alert">
-                                    <!-- エラーメッセージ表示用のエリア -->
-                                </span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th class="left-th">年数指定</th>
-                            <th class="right-th">部品ID</th>
-                        </tr>
-                        <tr>
-                            <td class="left-td">
-                                <input type="text" id="orderedDate" name="orderedDate" maxlength="10" value="" class="checkform">
-                            </td>
-                            <td class="right-td">
-                                <input type="text" id="orderingCount" name="orderingCount" maxlength="6" value="" class="checkform">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="alert left-alert" id="alt-orderedDate">
-                                    <!-- エラーメッセージ表示用のエリア -->
-                                </span>
-                            </td>
-                            <td>
-                                <span class="alert right-alert" id="alt-orderingCount">
-                                    <!-- エラーメッセージ表示用のエリア -->
-                                </span>
-                            </td>
-                        </tr>
-
-                    </table>
-
-                    <div class="button">
-                        <input type="button" name="searchConditions" value="検索">
+            <div class="modal-window">
+                <p id="message"></p>
+                <h1 id="condition-title">詳細検索</h1>
+                <div class="title-border"></div>
+                <div id="conditions-wrapper">
+                    <div class="condition-row">
+                        <div class="condition">
+                            <p>拠点</p>
+                            <select id="baseList" name="baseList">
+                                <option value="">選択してください</option>
+                                <option value="">大阪営業部</option>
+                                <option value="">東京営業部</option>
+                            </select>
+                        </div>
+                        <div class="condition">
+                            <p>ロケーション</p>
+                            <input type="text" id="content-locationCd" name="location-cd">
+                        </div>
+                    </div>
+                    <div class="shelf-row">
+                        <p id="shelf-title">棚コード</p>
+                    </div>
+                    <div class="shelf-row shelf-input">
+                        <input type="text" id="shalf-cd1" onInput="onInputShelfCd()" placeholder="from">
+                        <span id="tilde">~</span>
+                        <input type="text" id="shelf-cd" onInput="onInputShelfCd()" placeholder="to">
+                    </div>
+                    <div class="condition-row">
+                        <div class="condition">
+                            <p>ワード１</p>
+                            <input type="text" id="word1" name="word1">
+                        </div>
+                        <div class="condition">
+                            <p>ワード2</p>
+                            <input type="text" id="word2" name="word2">
+                        </div>
+                    </div>
+                    <div class="condition-row">
+                        <div class="condition">
+                            <p>年数指定</p>
+                            <select id="overdate" name="overdate">
+                                <option value="">選択してください</option>
+                                <option value="">１年以上</option>
+                                <option value="">２年以上</option>
+                                <option value="">３年以上</option>
+                                <option value="">４年以上</option>
+                            </select>
+                        </div>
+                        <div class="condition">
+                            <p>部品ID</p>
+                            <input type="text" id="parts-id" name="parts-id">
+                        </div>
+                    </div>
+                    <div class="condition-row">
+                        <input type="button" name="search-btn" id="search-condition-btn" value="検索">
                         <p id="message"></p>
-                        <button id="close" onclick="return closeModal()">戻る</button>
+                        <button id="back-btn" onclick="return closeModal()">戻る</button>
                     </div>
                 </div>
             </div>

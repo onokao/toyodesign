@@ -1,4 +1,5 @@
-#searchArrivalDate, #searchSummary{
+#searchArrivalDate,
+#searchSummary {
     width: 13rem;
     color: var(--primary-dark-color);
     line-height: 2.5rem;
@@ -7,10 +8,186 @@
     padding: 0.1rem;
     border: 0.1rem solid var(--line-color);
 }
-#searchArrivalDate{
+
+#searchArrivalDate {
     margin-left: 1rem;
     background-color: #FFFFFF;
 }
-#searchSummary{
+
+#searchSummary {
     background-color: #3DFF50;
+}
+
+/*
+ * モーダルウィンドウ
+ */
+.modal-window {
+    position: fixed;
+    display: none;
+    z-index: 3;
+    grid-row: 1;
+    grid-column: 1;
+    margin: 0rem;
+    background-color: #ffffff;
+    border: 0.2rem solid #000000;
+    border-radius: 1.8rem;
+}
+
+#condition-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: 2rem 2.5rem 1rem 2.5rem;
+}
+
+.title-border {
+    color: #000051;
+    border-bottom: solid 1rem #707070;
+    /* 下ボーダー */
+    margin: 0.5rem 2.5rem 1rem 2.5rem;
+}
+
+/*
+ * ラベルの属性
+ */
+.modal-window p {
+    color: #000051;
+    /* 文字色 */
+    text-align: left;
+    /* 文字左寄せ */
+    background-color: #ffffff;
+    border: none;
+    font-weight: 100;
+    font-size: 1.5rem;
+}
+
+.modal-window input,
+select {
+    width: 15rem;
+    background-color: #ffffff;
+    border: solid 0.2rem #707070;
+    padding: 0.2rem;
+}
+
+.modal-window select {
+    padding: 0.5rem;
+    box-sizing: 15rem;
+}
+
+.parts-name {
+    width: 70%;
+    border-bottom: solid 0.3rem #707070;
+}
+
+/*
+ * 条件追加の各段を横一列にする
+ */
+.condition-row {
+    text-align: center;
+    /* ボタンを真ん中に持ってくる */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.condition,
+.shelf-row {
+    width: 20rem;
+    margin: 1rem 2rem;
+}
+
+.shelf-input {
+    display: grid;
+    grid-template-columns: 1fr 8rem 1fr;
+    padding: 0.2rem;
+}
+
+.shelf-input input {
+    width: 15rem;
+    margin: 0 0;
+}
+
+#shalf-cd1 {
+    margin-left: 2.2rem;
+}
+
+#tilde {
+    text-align: center;
+}
+
+#search-condition-btn {
+    font-size: 2rem;
+    /* フォントサイズ */
+    padding: 0.8rem 0.8rem;
+    border: 0rem none;
+    /* 境界線 */
+    background-color: #000051;
+    /* 背景色 */
+    color: #ffffff;
+    /* 文字色 */
+    width: 10rem;
+    /* 横幅 */
+    margin: 2rem 2.5rem;
+    border-radius: 0.7rem;
+    border: solid 0.2rem #707070;
+}
+
+.modal-window .button input:hover {
+    opacity: 0.5;
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+}
+
+/*
+ * 戻るボタン
+ */
+#back-btn {
+    font-size: 2rem;
+    background-color: #ffffff;
+    color: #000051;
+    width: 10rem;
+    height: 5rem;
+    margin: 2rem 2.5rem;
+    border-radius: 0.7rem;
+    border: solid 0.2rem #707070;
+}
+
+#back-btn:hover {
+    opacity: 0.5;
+    text-decoration: none;
+    cursor: pointer;
+    cursor: hand;
+}
+
+.alert {
+    font-size: 1.3rem;
+    color: red;
+    /* 文字色(赤色) */
+    background-color: #fee;
+    /* 背景色(淡い赤色) */
+    background-image: url("alerticon.png");
+    /* 背景画像(警告アイコンを表示) */
+    background-repeat: no-repeat;
+    /* 背景画像の繰り返しをナシに */
+    background-position: 0.35rem center;
+    /* 背景画像の掲載位置(左端から0.35rem・上下方向の中央) */
+    display: inline-block;
+    /* インラインブロック化 */
+    border-radius: 0.5rem;
+    /* 角丸(半径0.5文字分) */
+}
+
+/* ▼入力チェック結果でエラーがない場合は非表示にする */
+.alert:empty {
+    display: hidden;
+}
+
+.left-alert {
+    padding: 0.2rem 1rem;
+    margin: 0rem 2rem 1rem 3rem;
+}
+
+.right-alert {
+    padding: 0.2rem 1rem;
+    margin: 0rem 2rem 1rem 0rem;
 }

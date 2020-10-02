@@ -122,7 +122,7 @@ const showMenu = (menuArray) => {
 
 function overlay() {
     //オーバーレイ処理
-    $('#overlay, .modalWindow').fadeIn();
+    $('#overlay, .modal-window').fadeIn();
 
     locateCenter();
     $(window).resize(locateCenter);
@@ -131,18 +131,18 @@ function overlay() {
 
 function closeModal() {
     //モーダル処理
-    $('#overlay, .modalWindow').fadeOut();
+    $('#overlay, .modal-window').fadeOut();
     return false;
 }
 function locateCenter() {
     let w = $(window).width();
     let h = $(window).height();
 
-    let cw = $('.modalWindow').outerWidth();
-    let ch = $('.modalWindow').outerHeight();
+    let cw = $('.modal-window').outerWidth();
+    let ch = $('.modal-window').outerHeight();
 
-    $('.modalWindow').css({
+    $('.modal-window').css({
         'left': ((w - cw) / 2 * 0.1) + 'rem',
-        'top': ((h - ch) / 2 * 0.1) + 'rem'
+        'top': ((h - ch) / 5 * 0.1) + 'rem'
     });
 }
