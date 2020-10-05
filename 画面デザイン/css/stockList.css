@@ -89,16 +89,19 @@ select {
     align-items: center;
 }
 
-.condition,
-.shelf-row {
+.condition{
     width: 20rem;
     margin: 1rem 2rem;
 }
-
+.shelf-row{
+    width: 20rem;
+    margin: 1rem 2rem 0 2rem;
+}
 .shelf-input {
     display: grid;
     grid-template-columns: 1fr 8rem 1fr;
     padding: 0.2rem;
+    margin: 0 2rem;
 }
 
 .shelf-input input {
@@ -110,8 +113,12 @@ select {
     margin-left: 2.2rem;
 }
 
-#tilde {
+.tilde {
     text-align: center;
+}
+.tilde font{
+    font-size: 2rem;
+    padding: 0;
 }
 
 #search-condition-btn {
@@ -161,9 +168,9 @@ select {
 
 .alert {
     font-size: 1.3rem;
-    color: red;
+    color: red !important;
     /* 文字色(赤色) */
-    background-color: #fee;
+    background-color: #fee !important;
     /* 背景色(淡い赤色) */
     background-image: url("alerticon.png");
     /* 背景画像(警告アイコンを表示) */
@@ -179,7 +186,7 @@ select {
 
 /* ▼入力チェック結果でエラーがない場合は非表示にする */
 .alert:empty {
-    display: hidden;
+    display: none;
 }
 
 .left-alert {

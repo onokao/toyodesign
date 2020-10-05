@@ -20,6 +20,7 @@
         $(function() {
             $("#insert-header").load("common.html header");
         });
+
     </script>
     <main>
         <form>
@@ -72,9 +73,9 @@
                     <div class="shelf-row">
                         <p id="shelf-title">棚コード</p>
                     </div>
-                    <div class="shelf-row shelf-input">
+                    <div class="shelf-input">
                         <input type="text" id="shalf-cd1" onInput="onInputShelfCd()" placeholder="from">
-                        <span id="tilde">~</span>
+                        <span class="tilde"><font>~</font></span>
                         <input type="text" id="shelf-cd" onInput="onInputShelfCd()" placeholder="to">
                     </div>
                     <div class="condition-row">
@@ -101,6 +102,7 @@
                         <div class="condition">
                             <p>部品ID</p>
                             <input type="text" id="parts-id" name="parts-id">
+                            <p class="alert">部品IDは数値だけ</p>
                         </div>
                     </div>
                     <div class="condition-row">
@@ -114,6 +116,7 @@
 
         <script>
             createTable();
+
         </script>
     </main>
     <footer>
